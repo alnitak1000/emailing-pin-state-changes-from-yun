@@ -14,7 +14,7 @@ TEXT = 'Your digital pin went HIGH'
 value = bridgeclient()                              
                                                      
 #function to send email 
-def send_email(sensorValue):
+def send_email():
  	print("Sending Email")
 	smtpserver = smtplib.SMTP("smtp.gmail.com",587)
 	smtpserver.ehlo()
@@ -34,9 +34,9 @@ while True:
 	message = value.get("D7")
 	print message
  	if message == '1' :
- 		#send_email()
+ 		TEXT2 =  "A0 analog value: "+ value.get("A0")
+ 		send_email()
 		print "sending email, D7 went high!"
-		TEXT2 =  "A0 analog value: "+ value.get("A0")
 		print TEXT2
 	elif message == "0":
 		print "D7 low"
